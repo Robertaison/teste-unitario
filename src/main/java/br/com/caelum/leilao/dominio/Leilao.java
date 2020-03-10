@@ -1,8 +1,6 @@
 package br.com.caelum.leilao.dominio;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Leilao {
 
@@ -11,7 +9,7 @@ public class Leilao {
 	
 	public Leilao(String descricao) {
 		this.descricao = descricao;
-		this.lances = new ArrayList<Lance>();
+		this.lances = new ArrayList<>();
 	}
 	
 	public void propoe(Lance lance) {
