@@ -6,3 +6,8 @@ target/
 #Arquivos
 .project
 .classpath
+
+#UnkownFiles
+.attach_pid4734
+.attach_pid32543
+.attach_pid13483

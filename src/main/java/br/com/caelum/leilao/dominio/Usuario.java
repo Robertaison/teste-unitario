@@ -21,7 +21,30 @@ public class Usuario {
 	public String getNome() {
 		return nome;
 	}
-	
-	
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Usuario usuario = (Usuario) o;
+
+		if (getId() != usuario.getId()) return false;
+		return getNome() != null ? getNome().equals(usuario.getNome()) : usuario.getNome() == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = getId();
+		result = 31 * result + (getNome() != null ? getNome().hashCode() : 0);
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				'}';
+	}
 }
