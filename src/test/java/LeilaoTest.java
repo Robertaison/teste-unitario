@@ -1,6 +1,7 @@
 import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Leilao;
 import br.com.caelum.leilao.dominio.Usuario;
+import br.com.caelum.leilao.exception.ValorInvalidoParaLanceException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -90,5 +91,15 @@ public class LeilaoTest {
         Double ultimoLanceDoUsuarioDobrado = leilao.dobraLance(compradorUm);
         Double valorEsperado = 20000.0;
         assertEquals(valorEsperado, ultimoLanceDoUsuarioDobrado);
+    }
+
+    @Test(expected = ValorInvalidoParaLanceException.class)
+    public void naoDeveAceitarValoresIgualAZero(){
+        leilao.propoe(new Lance(compradorUm, 0.0));
+    }
+
+    @Test(expected = ValorInvalidoParaLanceException.class)
+    public void naoDeveAceitarValoresIgualMenoQueZero(){
+        leilao.propoe(new Lance(compradorUm, -1.0));
     }
 }

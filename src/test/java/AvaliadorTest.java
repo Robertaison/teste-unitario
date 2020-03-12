@@ -1,13 +1,17 @@
 import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Leilao;
 import br.com.caelum.leilao.dominio.Usuario;
+import br.com.caelum.leilao.exception.LeilaoSemLanceException;
 import br.com.caelum.leilao.servico.Avaliador;
 import org.junit.Before;
 import org.junit.Test;
 
+
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class AvaliadorTest {
 
@@ -50,9 +54,9 @@ public class AvaliadorTest {
         double maiorValorEsperado = 400;
         double mediaEsperada = 300;
 
-        assertEquals(maiorValorEsperado, leiloeiro.getMaiorValor(), 0.000001);
-        assertEquals(menorValorEsperado, leiloeiro.getMenorValor(), 0.000001);
-        assertEquals(mediaEsperada, leiloeiro.media(leilao.getLances()), 0.000001);
+        assertThat(maiorValorEsperado, equalTo(leiloeiro.getMaiorValor()));
+        assertThat(menorValorEsperado, equalTo(leiloeiro.getMenorValor()));
+        assertThat(mediaEsperada, equalTo(leiloeiro.media(leilao.getLances())));
     }
 
     @Test
@@ -116,10 +120,11 @@ public class AvaliadorTest {
 
         List<Lance> maiores = leiloeiro.getTresMaiores();
 
-        assertEquals(3, maiores.size());
-        assertEquals(400.0, maiores.get(0).getValor(), 0.00001);
-        assertEquals(300.0, maiores.get(1).getValor(), 0.00001);
-        assertEquals(250.0, maiores.get(2).getValor(), 0.00001);
+        assertThat(maiores, hasItems(
+                new Lance(maria, 400.0),
+                new Lance(joao,300.0),
+                new Lance(joao, 250.0)
+        ));
     }
 
     @Test
@@ -137,15 +142,9 @@ public class AvaliadorTest {
         assertEquals(100.0, maiores.get(1).getValor(), 0.00001);
     }
 
-    @Test
-    public void deveTerListaVazia() {
+    @Test(expected = LeilaoSemLanceException.class)
+    public void deveLancarExcessaoCasoNaoHajaLances(){
 
         leiloeiro.avalia(leilao);
-
-        List<Lance> maiores = leiloeiro.getTresMaiores();
-
-        assertEquals(0, maiores.size());
-        assertEquals(true, maiores.isEmpty());
-
     }
 }

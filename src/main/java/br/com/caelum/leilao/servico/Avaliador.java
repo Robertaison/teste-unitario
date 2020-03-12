@@ -2,6 +2,7 @@ package br.com.caelum.leilao.servico;
 
 import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Leilao;
+import br.com.caelum.leilao.exception.LeilaoSemLanceException;
 
 import java.util.*;
 
@@ -13,6 +14,11 @@ public class Avaliador {
     private List<Lance> maiores;
 
     public void avalia(Leilao leilao){
+
+        if(leilao.getLances().size() == 0){
+            throw new LeilaoSemLanceException();
+        }
+
         for (Lance lance : leilao.getLances()) {
             if(lance.getValor() > maiorDeTodos) {
                 maiorDeTodos = lance.getValor();
