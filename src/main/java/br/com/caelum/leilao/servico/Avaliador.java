@@ -21,15 +21,6 @@ public class Avaliador {
             }
         }
 
-        maiores = new ArrayList<Lance>(leilao.getLances());
-        Collections.sort(maiores, new Comparator<Lance>() {
-
-            public int compare(Lance o1, Lance o2) {
-                if(o1.getValor() < o2.getValor()) return 1;
-                if(o1.getValor() > o2.getValor()) return -1;
-                return 0;
-            }
-        });
         pegaOsMaioresNo(leilao);
     }
 
@@ -56,14 +47,13 @@ public class Avaliador {
     }
 
     private void pegaOsMaioresNo(Leilao leilao) {
-        maiores = new ArrayList<Lance>(leilao.getLances());
-        Collections.sort(maiores, new Comparator<Lance>() {
-            public int compare(Lance o1, Lance o2) {
-                if(o1.getValor() < o2.getValor()) return 1;
-                if(o1.getValor() > o2.getValor()) return -1;
-                return 0;
-            }
-        });
+        maiores = new ArrayList<>(leilao.getLances());
+        maiores.sort(
+                Comparator
+                        .comparingDouble(Lance::getValor)
+                        .reversed()
+        );
+
         maiores = maiores.subList(0, maiores.size() > 3 ? 3 : maiores.size());
     }
 }

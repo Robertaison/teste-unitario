@@ -39,9 +39,9 @@ public class AvaliadorTest {
     @Test
     public void deveEntenderLancesEmOrdemCrescente(){
 
-        leilao.propoe(new Lance(joao, 300));
-        leilao.propoe(new Lance(maria, 400));
-        leilao.propoe(new Lance(lucas, 200));
+        leilao.propoe(new Lance(joao, 300.0));
+        leilao.propoe(new Lance(maria, 400.0));
+        leilao.propoe(new Lance(lucas, 200.0));
 
         leiloeiro.avalia(leilao);
 
@@ -87,12 +87,12 @@ public class AvaliadorTest {
     @Test
     public void deveEntenderLancesEmOrdemAleatoriaComOutrosValores(){
 
-        leilao.propoe(new Lance(joao, 200));
-        leilao.propoe(new Lance(maria, 450));
-        leilao.propoe(new Lance(lucas, 120));
-        leilao.propoe(new Lance(gabi, 700));
-        leilao.propoe(new Lance(leo, 630));
-        leilao.propoe(new Lance(nati, 230));
+        leilao.propoe(new Lance(joao, 200.0));
+        leilao.propoe(new Lance(maria, 450.0));
+        leilao.propoe(new Lance(lucas, 120.0));
+        leilao.propoe(new Lance(gabi, 700.0));
+        leilao.propoe(new Lance(leo, 630.0));
+        leilao.propoe(new Lance(nati, 230.0));
 
         leiloeiro.avalia(leilao);
 
@@ -110,7 +110,7 @@ public class AvaliadorTest {
         leilao.propoe(new Lance(maria, 200.0));
         leilao.propoe(new Lance(joao, 300.0));
         leilao.propoe(new Lance(maria, 400.0));
-        leilao.propoe(new Lance(maria, 250.0));
+        leilao.propoe(new Lance(joao, 250.0));
 
         leiloeiro.avalia(leilao);
 
