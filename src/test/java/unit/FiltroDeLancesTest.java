@@ -1,3 +1,5 @@
+package unit;
+
 import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Usuario;
 import br.com.caelum.leilao.servico.FiltroDeLances;

@@ -1,3 +1,5 @@
+package unit;
+
 import br.com.caelum.leilao.desafio.MatematicaMaluca;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

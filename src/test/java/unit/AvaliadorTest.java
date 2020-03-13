@@ -1,8 +1,11 @@
+package unit;
+
 import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Leilao;
 import br.com.caelum.leilao.dominio.Usuario;
 import br.com.caelum.leilao.exception.LeilaoSemLanceException;
 import br.com.caelum.leilao.servico.Avaliador;
+import factory.CriadorDeLeilao;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +20,8 @@ public class AvaliadorTest {
 
     private Leilao leilao;
     private Avaliador leiloeiro;
-
+    private CriadorDeLeilao criadorDeLeilao;
+    
     //Compradores
     private Usuario joao;
     private Usuario maria;
@@ -54,7 +58,7 @@ public class AvaliadorTest {
         double maiorValorEsperado = 400;
         double mediaEsperada = 300;
 
-        assertThat(maiorValorEsperado, equalTo(leiloeiro.getMaiorValor()));
+        assertThat(leiloeiro.getMaiorValor(), equalTo(maiorValorEsperado));
         assertThat(menorValorEsperado, equalTo(leiloeiro.getMenorValor()));
         assertThat(mediaEsperada, equalTo(leiloeiro.media(leilao.getLances())));
     }
