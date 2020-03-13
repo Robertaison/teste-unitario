@@ -3,7 +3,6 @@ package unit;
 import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Leilao;
 import br.com.caelum.leilao.dominio.Usuario;
-import br.com.caelum.leilao.exception.LeilaoSemLanceException;
 import br.com.caelum.leilao.servico.Avaliador;
 import factory.CriadorDeLeilao;
 import org.junit.Before;
@@ -14,7 +13,6 @@ import java.util.List;
 import static matcher.LeilaoMatcher.temUmLance;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertEquals;
 
 public class TesteComUltimosConceitos {

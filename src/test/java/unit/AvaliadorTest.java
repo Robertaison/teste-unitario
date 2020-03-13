@@ -9,12 +9,12 @@ import factory.CriadorDeLeilao;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
+import static org.junit.Assert.assertEquals;
 
 public class AvaliadorTest {
 
