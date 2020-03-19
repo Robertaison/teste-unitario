@@ -1,4 +1,4 @@
-# java-collections-and-stream
+# teste-unitario
 
 ## This repository intend to explore tests implementation, in specific unit test.
 
